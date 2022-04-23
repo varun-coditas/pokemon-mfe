@@ -40,6 +40,13 @@
     "search-e2e": {
       "tags": [],
       "implicitDependencies": ["search"]
+    },
+    "shell": {
+      "tags": []
+    },
+    "shell-e2e": {
+      "tags": [],
+      "implicitDependencies": ["shell"]
     }
   }
 }

@@ -24,17 +24,17 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       // For remotes (please adjust)
-      name: 'search',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './CarouselComponent':
-          './apps/search/src/app/pokemon-carousel/pokemon-carousel.component.ts',
-      },
+      // name: 'search',
+      // filename: 'remoteEntry.js',
+      // exposes: {
+      //   './CarouselComponent':
+      //     './apps/search/src/app/pokemon-carousel/pokemon-carousel.component.ts'
+      // },
 
       // For hosts (please adjust)
       // remotes: {
-      //     "home": "home@http://localhost:4200/remoteEntry.js",
-
+      //   "home": "home@http://localhost:4200/remoteEntry.js",
+      //   "search": 'search@http://localhost:4201/remoteEntry.js',
       // },
 
       shared: share({

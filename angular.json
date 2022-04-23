@@ -1,310 +1,447 @@
 {
-  "version": 1,
-  "projects": {
-    "home": {
-      "projectType": "application",
-      "root": "apps/home",
-      "sourceRoot": "apps/home/src",
-      "prefix": "ang-pokemon-mfe",
-      "architect": {
-        "build": {
-          "builder": "ngx-build-plus:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/home",
-            "index": "apps/home/src/index.html",
-            "main": "apps/home/src/main.ts",
-            "polyfills": "apps/home/src/polyfills.ts",
-            "tsConfig": "apps/home/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/home/src/favicon.ico",
-              "apps/home/src/assets"
-            ],
-            "styles": [
-              "apps/home/src/styles.scss"
-            ],
-            "scripts": [],
-            "extraWebpackConfig": "apps/home/webpack.config.js",
-            "commonChunk": false
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/home/src/environments/environment.ts",
-                  "with": "apps/home/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all",
-              "extraWebpackConfig": "apps/home/webpack.prod.config.js"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "ngx-build-plus:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "home:build:production",
-              "extraWebpackConfig": "apps/home/webpack.prod.config.js"
-            },
-            "development": {
-              "browserTarget": "home:build:development"
-            }
-          },
-          "defaultConfiguration": "development",
-          "options": {
-            "extraWebpackConfig": "apps/home/webpack.config.js",
-            "port": 4200
-          }
-        },
-        "extract-i18n": {
-          "builder": "ngx-build-plus:extract-i18n",
-          "options": {
-            "browserTarget": "home:build",
-            "extraWebpackConfig": "apps/home/webpack.config.js"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/home/src/**/*.ts",
-              "apps/home/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/home"
-          ],
-          "options": {
-            "jestConfig": "apps/home/jest.config.js",
-            "passWithNoTests": true,
-            "extraWebpackConfig": "apps/home/webpack.config.js"
-          }
-        }
-      }
-    },
-    "home-e2e": {
-      "root": "apps/home-e2e",
-      "sourceRoot": "apps/home-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/home-e2e/cypress.json",
-            "tsConfig": "apps/home-e2e/tsconfig.e2e.json",
-            "devServerTarget": "home:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "home:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/home-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "search": {
-      "projectType": "application",
-      "root": "apps/search",
-      "sourceRoot": "apps/search/src",
-      "prefix": "ang-pokemon-mfe",
-      "architect": {
-        "build": {
-          "builder": "ngx-build-plus:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/search",
-            "index": "apps/search/src/index.html",
-            "main": "apps/search/src/main.ts",
-            "polyfills": "apps/search/src/polyfills.ts",
-            "tsConfig": "apps/search/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/search/src/favicon.ico",
-              "apps/search/src/assets"
-            ],
-            "styles": [
-              "apps/search/src/styles.scss"
-            ],
-            "scripts": [],
-            "extraWebpackConfig": "apps/search/webpack.config.js",
-            "commonChunk": false
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/search/src/environments/environment.ts",
-                  "with": "apps/search/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all",
-              "extraWebpackConfig": "apps/search/webpack.prod.config.js"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "ngx-build-plus:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "search:build:production",
-              "extraWebpackConfig": "apps/search/webpack.prod.config.js"
-            },
-            "development": {
-              "browserTarget": "search:build:development"
-            }
-          },
-          "defaultConfiguration": "development",
-          "options": {
-            "extraWebpackConfig": "apps/search/webpack.config.js",
-            "port": 4201
-          }
-        },
-        "extract-i18n": {
-          "builder": "ngx-build-plus:extract-i18n",
-          "options": {
-            "browserTarget": "search:build",
-            "extraWebpackConfig": "apps/search/webpack.config.js"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/search/src/**/*.ts",
-              "apps/search/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/search"
-          ],
-          "options": {
-            "jestConfig": "apps/search/jest.config.js",
-            "passWithNoTests": true,
-            "extraWebpackConfig": "apps/search/webpack.config.js"
-          }
-        }
-      }
-    },
-    "search-e2e": {
-      "root": "apps/search-e2e",
-      "sourceRoot": "apps/search-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/search-e2e/cypress.json",
-            "tsConfig": "apps/search-e2e/tsconfig.e2e.json",
-            "devServerTarget": "search:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "search:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/search-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "defaultProject": "search"
+	"version": 1,
+	"projects": {
+		"home": {
+			"projectType": "application",
+			"root": "apps/home",
+			"sourceRoot": "apps/home/src",
+			"prefix": "ang-pokemon-mfe",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"outputs": [
+						"{options.outputPath}"
+					],
+					"options": {
+						"outputPath": "dist/apps/home",
+						"index": "apps/home/src/index.html",
+						"main": "apps/home/src/main.ts",
+						"polyfills": "apps/home/src/polyfills.ts",
+						"tsConfig": "apps/home/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"apps/home/src/favicon.ico",
+							"apps/home/src/assets"
+						],
+						"styles": [
+							"apps/home/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "apps/home/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "apps/home/src/environments/environment.ts",
+									"with": "apps/home/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "apps/home/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "home:build:production",
+							"extraWebpackConfig": "apps/home/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "home:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"extraWebpackConfig": "apps/home/webpack.config.js",
+						"port": 4200
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "home:build",
+						"extraWebpackConfig": "apps/home/webpack.config.js"
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"apps/home/src/**/*.ts",
+							"apps/home/src/**/*.html"
+						]
+					}
+				},
+				"test": {
+					"builder": "ngx-build-plus:karma",
+					"outputs": [
+						"coverage/apps/home"
+					],
+					"options": {
+						"jestConfig": "apps/home/jest.config.js",
+						"passWithNoTests": true,
+						"extraWebpackConfig": "apps/home/webpack.config.js"
+					}
+				}
+			}
+		},
+		"home-e2e": {
+			"root": "apps/home-e2e",
+			"sourceRoot": "apps/home-e2e/src",
+			"projectType": "application",
+			"architect": {
+				"e2e": {
+					"builder": "@nrwl/cypress:cypress",
+					"options": {
+						"cypressConfig": "apps/home-e2e/cypress.json",
+						"tsConfig": "apps/home-e2e/tsconfig.e2e.json",
+						"devServerTarget": "home:serve:development"
+					},
+					"configurations": {
+						"production": {
+							"devServerTarget": "home:serve:production"
+						}
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"apps/home-e2e/**/*.{js,ts}"
+						]
+					}
+				}
+			}
+		},
+		"search": {
+			"projectType": "application",
+			"root": "apps/search",
+			"sourceRoot": "apps/search/src",
+			"prefix": "ang-pokemon-mfe",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"outputs": [
+						"{options.outputPath}"
+					],
+					"options": {
+						"outputPath": "dist/apps/search",
+						"index": "apps/search/src/index.html",
+						"main": "apps/search/src/main.ts",
+						"polyfills": "apps/search/src/polyfills.ts",
+						"tsConfig": "apps/search/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"apps/search/src/favicon.ico",
+							"apps/search/src/assets"
+						],
+						"styles": [
+							"apps/search/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "apps/search/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "apps/search/src/environments/environment.ts",
+									"with": "apps/search/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "apps/search/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "search:build:production",
+							"extraWebpackConfig": "apps/search/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "search:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"extraWebpackConfig": "apps/search/webpack.config.js",
+						"port": 4201
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "search:build",
+						"extraWebpackConfig": "apps/search/webpack.config.js"
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"apps/search/src/**/*.ts",
+							"apps/search/src/**/*.html"
+						]
+					}
+				},
+				"test": {
+					"builder": "ngx-build-plus:karma",
+					"outputs": [
+						"coverage/apps/search"
+					],
+					"options": {
+						"jestConfig": "apps/search/jest.config.js",
+						"passWithNoTests": true,
+						"extraWebpackConfig": "apps/search/webpack.config.js"
+					}
+				}
+			}
+		},
+		"search-e2e": {
+			"root": "apps/search-e2e",
+			"sourceRoot": "apps/search-e2e/src",
+			"projectType": "application",
+			"architect": {
+				"e2e": {
+					"builder": "@nrwl/cypress:cypress",
+					"options": {
+						"cypressConfig": "apps/search-e2e/cypress.json",
+						"tsConfig": "apps/search-e2e/tsconfig.e2e.json",
+						"devServerTarget": "search:serve:development"
+					},
+					"configurations": {
+						"production": {
+							"devServerTarget": "search:serve:production"
+						}
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"apps/search-e2e/**/*.{js,ts}"
+						]
+					}
+				}
+			}
+		},
+		"shell": {
+			"projectType": "application",
+			"root": "apps/shell",
+			"sourceRoot": "apps/shell/src",
+			"prefix": "ang-pokemon-mfe",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"outputs": [
+						"{options.outputPath}"
+					],
+					"options": {
+						"outputPath": "dist/apps/shell",
+						"index": "apps/shell/src/index.html",
+						"main": "apps/shell/src/main.ts",
+						"polyfills": "apps/shell/src/polyfills.ts",
+						"tsConfig": "apps/shell/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"apps/shell/src/favicon.ico",
+							"apps/shell/src/assets"
+						],
+						"styles": [
+							"apps/shell/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "apps/shell/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "apps/shell/src/environments/environment.ts",
+									"with": "apps/shell/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "apps/shell/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "shell:build:production",
+							"extraWebpackConfig": "apps/shell/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "shell:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 5000,
+						"extraWebpackConfig": "apps/shell/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "shell:build",
+						"extraWebpackConfig": "apps/shell/webpack.config.js"
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"apps/shell/src/**/*.ts",
+							"apps/shell/src/**/*.html"
+						]
+					}
+				},
+				"test": {
+					"builder": "@nrwl/jest:jest",
+					"outputs": [
+						"coverage/apps/shell"
+					],
+					"options": {
+						"jestConfig": "apps/shell/jest.config.js",
+						"passWithNoTests": true
+					}
+				}
+			}
+		},
+		"shell-e2e": {
+			"root": "apps/shell-e2e",
+			"sourceRoot": "apps/shell-e2e/src",
+			"projectType": "application",
+			"architect": {
+				"e2e": {
+					"builder": "@nrwl/cypress:cypress",
+					"options": {
+						"cypressConfig": "apps/shell-e2e/cypress.json",
+						"tsConfig": "apps/shell-e2e/tsconfig.e2e.json",
+						"devServerTarget": "shell:serve:development"
+					},
+					"configurations": {
+						"production": {
+							"devServerTarget": "shell:serve:production"
+						}
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": [
+							"apps/shell-e2e/**/*.{js,ts}"
+						]
+					}
+				}
+			}
+		}
+	},
+	"cli": {
+		"analytics": false,
+		"defaultCollection": "@nrwl/angular"
+	},
+	"schematics": {
+		"@nrwl/angular": {
+			"application": {
+				"linter": "eslint"
+			},
+			"library": {
+				"linter": "eslint"
+			},
+			"storybook-configuration": {
+				"linter": "eslint"
+			}
+		},
+		"@nrwl/angular:application": {
+			"style": "scss",
+			"linter": "eslint",
+			"unitTestRunner": "jest",
+			"e2eTestRunner": "cypress"
+		},
+		"@nrwl/angular:library": {
+			"style": "scss",
+			"linter": "eslint",
+			"unitTestRunner": "jest"
+		},
+		"@nrwl/angular:component": {
+			"style": "scss"
+		}
+	},
+	"defaultProject": "search"
 }

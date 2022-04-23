@@ -2,3 +2,16 @@
 @import "primeng/resources/primeng.min.css";
 @import "primeflex/primeflex.css";
 @import "primeicons/primeicons.css";
+
+* {
+  margin: 0
+}
+
+.header {
+  height: 85px;
+  background-color: #3494F6;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+}

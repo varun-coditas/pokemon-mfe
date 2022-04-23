@@ -1,10 +1,11 @@
 import {
   Component,
-  OnInit,
   ComponentFactoryResolver,
-  ViewContainerRef,
   ComponentRef,
+  OnInit,
+  ViewContainerRef,
 } from '@angular/core';
+
 import { loadRemoteModule } from '@angular-architects/module-federation';
 
 @Component({
@@ -19,16 +20,18 @@ export class CarouselHostComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const { PokemonCarouselComponent } = await loadRemoteModule({
-      remoteEntry: 'http://localhost:4201/remoteEntry.js',
-      remoteName: 'search',
-      exposedModule: './CarouselComponent',
-    });
-    const componentRef: ComponentRef<{
-      search: string;
-    }> = this.vcref.createComponent(
-      this.cfr.resolveComponentFactory(PokemonCarouselComponent)
-    );
-    componentRef.instance.search = 'p';
+
+    // const { PokemonCarouselComponent } = await loadRemoteModule({
+    //   remoteEntry: 'http://localhost:4201/remoteEntry.js',
+    //   remoteName: 'search',
+    //   exposedModule: './CarouselComponent',
+    // });
+
+    // const componentRef: ComponentRef<{
+    //   search: string;
+    // }> = this.vcref.createComponent(
+    //   this.cfr.resolveComponentFactory(PokemonCarouselComponent)
+    // );
+    // componentRef.instance.search = 'p';
   }
 }

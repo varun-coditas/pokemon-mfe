@@ -1,9 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 interface Pokemon {
   name: {
     english: string;
   };
+  base: {
+    Speed: number;
+  }
 }
 interface Image {
   image: string;
@@ -29,6 +32,7 @@ export class PokemonCarouselComponent implements OnInit {
           .map((p: Pokemon) => ({
             image: `https://raw.githubusercontent.com/jherr/fower-pokemon-vue/master/public/pokemon/${p.name.english.toLowerCase()}.jpg`,
             name: p.name.english,
+            speed: p.base.Speed
           }))
           .filter((p: Image) => p.name.toLowerCase().indexOf(this.search) > -1)
           .slice(0, 10);
