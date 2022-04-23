@@ -31,9 +31,9 @@ module.exports = {
       // },
 
       // For hosts (please adjust)
-      // remotes: {
-      //   search: 'search@http://localhost:4201/remoteEntry.js',
-      // },
+      remotes: {
+        search: 'search@http://localhost:4201/remoteEntry.js',
+      },
 
       shared: share({
         '@angular/core': {

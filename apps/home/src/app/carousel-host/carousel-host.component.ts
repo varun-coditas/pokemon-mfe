@@ -21,17 +21,17 @@ export class CarouselHostComponent implements OnInit {
 
   async ngOnInit() {
 
-    // const { PokemonCarouselComponent } = await loadRemoteModule({
-    //   remoteEntry: 'http://localhost:4201/remoteEntry.js',
-    //   remoteName: 'search',
-    //   exposedModule: './CarouselComponent',
-    // });
+    const { PokemonCarouselComponent } = await loadRemoteModule({
+      remoteEntry: 'http://localhost:4201/remoteEntry.js',
+      remoteName: 'search',
+      exposedModule: './CarouselComponent',
+    });
 
-    // const componentRef: ComponentRef<{
-    //   search: string;
-    // }> = this.vcref.createComponent(
-    //   this.cfr.resolveComponentFactory(PokemonCarouselComponent)
-    // );
-    // componentRef.instance.search = 'p';
+    const componentRef: ComponentRef<{
+      search: string;
+    }> = this.vcref.createComponent(
+      this.cfr.resolveComponentFactory(PokemonCarouselComponent)
+    );
+    componentRef.instance.search = 'p';
   }
 }
