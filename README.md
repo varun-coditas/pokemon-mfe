@@ -9,6 +9,7 @@ This original code here is from [this repository](https://github.com/jherr/ang-p
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/IuULsUZBgas/0.jpg)](https://www.youtube.com/watch?v=IuULsUZBgas)
 
 Link: https://youtu.be/IuULsUZBgas
+Slides:[Download here](https://github.com/varun-coditas/pokemon-mfe/raw/main/Building%20Micro-frontends%20with%20Angular.pdf)
 
 ## Connect with me
 
